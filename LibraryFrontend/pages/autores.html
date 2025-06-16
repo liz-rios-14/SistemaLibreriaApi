@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Autores - Sistema de Librería</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/forms.css" />
+  <link rel="stylesheet" href="../css/tables.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Sistema de Librería</div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">🏠 Dashboard</a></li>
+            <li><a href="autores.html" class="active">👥 Autores</a></li>
+            <li><a href="libros.html">📚 Libros</a></li>
+            <li><a href="crear-autor.html">➕ Nuevo Autor</a></li>
+            <li><a href="crear-libro.html">➕ Nuevo Libro</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Título y acciones -->
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">👥 Gestión de Autores</h1>
+          <a href="crear-autor.html" class="btn btn-success">➕ Agregar Nuevo Autor</a>
+        </div>
+        <p>Administra todos los autores registrados en el sistema.</p>
+      </div>
+
+      <!-- Controles de filtros -->
+      <div class="card">
+        <div class="table-controls flex flex-wrap gap-1 align-center">
+          <!-- Filtro por nombre -->
+          <div class="filter-group">
+            <label for="filter-nombre">Nombre:</label>
+            <input type="text" id="filter-nombre" placeholder="Filtrar por nombre..." oninput="app.filterAutores()" />
+          </div>
+
+          <!-- Filtro por nacionalidad -->
+          <div class="filter-group">
+            <label for="filter-nacionalidad">Nacionalidad:</label>
+            <select id="filter-nacionalidad" onchange="app.filterAutores()">
+              <option value="">Todas</option>
+              <option value="Ecuatoriano">Ecuatoriano</option>
+              <option value="Colombiano">Colombiano</option>
+              <option value="Mexicano">Mexicano</option>
+              <option value="Español">Español</option>
+              <!-- Más opciones según datos reales -->
+            </select>
+          </div>
+
+          <!-- Filtro por rango de fecha nacimiento -->
+          <div class="filter-group">
+            <label>Fecha de Nacimiento:</label>
+            <input type="date" id="filter-fecha-inicio" onchange="app.filterAutores()" />
+            <span> a </span>
+            <input type="date" id="filter-fecha-fin" onchange="app.filterAutores()" />
+          </div>
+
+          <!-- Botón para limpiar filtros -->
+          <button class="btn btn-secondary" onclick="app.resetFiltrosAutores()">
+            🔄 Limpiar filtros
+          </button>
+        </div>
+
+        <!-- Tabla de autores -->
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="sortable" onclick="app.sortAutores('nombre')">👤 Nombre Completo</th>
+                <th class="sortable" onclick="app.sortAutores('fechaNacimiento')">📅 Fecha de Nacimiento</th>
+                <th class="sortable" onclick="app.sortAutores('nacionalidad')">🌍 Nacionalidad</th>
+                <th>⚙️ Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="autores-tbody">
+              <tr>
+                <td colspan="4">
+                  <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Cargando autores...</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Sistema de Librería. Desarrollado con ❤️ para la gestión de bibliotecas.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

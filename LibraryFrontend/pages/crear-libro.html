@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crear Nuevo Libro - Sistema de Librería</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/forms.css" />
+    <link rel="stylesheet" href="../css/tables.css" />
+    <style>
+        /* Estilos adicionales para modernizar */
+        body {
+            background: #f5f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #3a86ff;
+            color: #fff;
+            box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+        }
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.3rem;
+            padding: 0;
+            margin: 0;
+        }
+        nav a {
+            color: #d0e2ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+        nav a:hover:not(.active) {
+            background-color: #5586ff;
+        }
+        nav a.active {
+            background-color: #fff;
+            color: #3a86ff;
+            font-weight: 700;
+            pointer-events: none;
+        }
+        main .container {
+            max-width: 800px;
+            margin: 2rem auto 4rem;
+            padding: 0 1rem;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgb(0 0 0 / 0.05);
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            color: #3a86ff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn {
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.2rem;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            user-select: none;
+        }
+        .btn-secondary {
+            background-color: #e0e0e0;
+            color: #555;
+        }
+        .btn-secondary:hover {
+            background-color: #d4d4d4;
+        }
+        .btn-success {
+            background-color: #3a86ff;
+            color: #fff;
+        }
+        .btn-success:hover {
+            background-color: #2e6fdb;
+        }
+        p {
+            line-height: 1.5;
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        h3 {
+            margin-top: 0;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #444;
+        }
+        .form-label strong {
+            color: #3a86ff;
+        }
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            border: 1.5px solid #ccc;
+            border-radius: 6px;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+            resize: vertical;
+        }
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #3a86ff;
+            box-shadow: 0 0 5px rgba(58, 134, 255, 0.5);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap: 1.2rem 2rem;
+        }
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        ul {
+            padding-left: 1.3rem;
+            color: #555;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        a {
+            color: #3a86ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Multi-select placeholder */
+        .multi-select {
+            background: #f0f4ff;
+            border: 1.5px solid #b0c4ff;
+            border-radius: 6px;
+            min-height: 40px;
+            padding: 0.3rem 0.8rem;
+            font-size: 1rem;
+            color: #3a86ff;
+            display: flex;
+            align-items: center;
+        }
+        .loading {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #6b7c93;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .spinner {
+            border: 3px solid #d6dbf7;
+            border-top: 3px solid #3a86ff;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive nav */
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+                background: #3a86ff;
+                padding: 1rem;
+                border-radius: 0 0 8px 8px;
+                margin-top: 0.5rem;
+            }
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Sistema de Librería</div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">🏠 Dashboard</a></li>
+                        <li><a href="autores.html">👥 Autores</a></li>
+                        <li><a href="libros.html">📚 Libros</a></li>
+                        <li><a href="crear-autor.html">➕ Nuevo Autor</a></li>
+                        <li><a href="crear-libro.html" class="active">➕ Nuevo Libro</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Título -->
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">📖 Crear Nuevo Libro</h1>
+                    <a href="libros.html" class="btn btn-secondary">
+                        ← Volver a la lista
+                    </a>
+                </div>
+                <p>Completa la información del nuevo libro que deseas agregar al sistema.</p>
+            </div>
+
+            <!-- Formulario -->
+            <div class="card">
+                <form id="form-libro" class="form-container" novalidate>
+                    <!-- Información básica -->
+                    <h3>📚 Información Básica</h3>
+
+                    <div class="form-group">
+                        <label for="titulo" class="form-label">
+                            <strong>📖 Título del Libro *</strong>
+                        </label>
+                        <input
+                            type="text"
+                            id="titulo"
+                            name="titulo"
+                            class="form-input"
+                            placeholder="Ej: Cien años de soledad"
+                            required
+                            maxlength="200"
+                        />
+                    </div>
+
+                    <div class="form-grid">
+                        <!-- ISBN -->
+                        <div class="form-group">
+                            <label for="isbn" class="form-label">📋 ISBN</label>
+                            <input
+                                type="text"
+                                id="isbn"
+                                name="isbn"
+                                class="form-input"
+                                placeholder="Ej: 978-84-376-0494-7"
+                                maxlength="20"
+                            />
+                        </div>
+
+                        <!-- Fecha de Publicación -->
+                        <div class="form-group">
+                            <label for="fechaPublicacion" class="form-label">📅 Fecha de Publicación</label>
+                            <input
+                                type="date"
+                                id="fechaPublicacion"
+                                name="fechaPublicacion"
+                                class="form-input"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <!-- Editorial -->
+                        <div class="form-group">
+                            <label for="editorial" class="form-label">🏢 Editorial</label>
+                            <input
+                                type="text"
+                                id="editorial"
+                                name="editorial"
+                                class="form-input"
+                                placeholder="Ej: Sudamericana"
+                                maxlength="100"
+                            />
+                        </div>
+
+                        <!-- Número de Páginas -->
+                        <div class="form-group">
+                            <label for="numeroPaginas" class="form-label">📄 Número de Páginas</label>
+                            <input
+                                type="number"
+                                id="numeroPaginas"
+                                name="numeroPaginas"
+                                class="form-input"
+                                placeholder="Ej: 471"
+                                min="1"
+                                max="10000"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Género -->
+                    <div class="form-group">
+                        <label for="genero" class="form-label">🎭 Género Literario</label>
+                        <select id="genero" name="genero" class="form-select">
+                            <option value="">-- Seleccionar Género --</option>
+                            <option value="Ficción">Ficción</option>
+                            <option value="No Ficción">No Ficción</option>
+                            <option value="Realismo mágico">Realismo mágico</option>
+                            <option value="Novela">Novela</option>
+                            <option value="Cuento">Cuento</option>
+                            <option value="Poesía">Poesía</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Ensayo">Ensayo</option>
+                            <option value="Biografía">Biografía</option>
+                            <option value="Historia">Historia</option>
+                            <option value="Ciencia ficción">Ciencia ficción</option>
+                        </select>
+                    </div>
+
+                    <!-- Autores -->
+                    <div class="form-group">
+                        <label for="autores" class="form-label">
+                            ✍️ Autores <small>(Puedes seleccionar varios)</small>
+                        </label>
+                        <select
+                            id="autores"
+                            name="autores"
+                            class="form-select"
+                            multiple
+                            size="5"
+                            aria-describedby="autoresHelp"
+                            required
+                        >
+                            <!-- Opciones se pueden cargar dinámicamente con JS -->
+                            <option value="1">Gabriel García Márquez</option>
+                            <option value="2">Isabel Allende</option>
+                            <option value="3">Jorge Luis Borges</option>
+                            <option value="4">Mario Vargas Llosa</option>
+                            <option value="5">Laura Esquivel</option>
+                            <option value="6">Julio Cortázar</option>
+                            <option value="7">Pablo Neruda</option>
+                            <option value="8">Carlos Fuentes</option>
+                        </select>
+                        <small id="autoresHelp" style="color: #666; font-size: 0.85rem; margin-top: 0.2rem;">
+                            Mantén presionada la tecla Ctrl (Cmd en Mac) para seleccionar varios autores.
+                        </small>
+                    </div>
+
+                    <!-- Descripción -->
+                    <div class="form-group">
+                        <label for="descripcion" class="form-label">📝 Descripción</label>
+                        <textarea
+                            id="descripcion"
+                            name="descripcion"
+                            class="form-textarea"
+                            placeholder="Escribe una breve descripción del libro..."
+                            rows="4"
+                            maxlength="500"
+                        ></textarea>
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary" title="Limpiar formulario">
+                            🧹 Limpiar
+                        </button>
+                        <button type="submit" class="btn btn-success" title="Guardar nuevo libro">
+                            💾 Guardar Libro
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Nota -->
+            <p style="font-size: 0.9rem; color: #666;">
+                * Campos obligatorios. Puedes <a href="crear-autor.html">crear un nuevo autor</a> si no está en la lista.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>

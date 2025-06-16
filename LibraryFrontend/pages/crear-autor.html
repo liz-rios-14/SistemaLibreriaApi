@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear Nuevo Autor - Sistema de Librería</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/forms.css" />
+  <link rel="stylesheet" href="../css/tables.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Sistema de Librería</div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">🏠 Dashboard</a></li>
+            <li><a href="autores.html">👥 Autores</a></li>
+            <li><a href="libros.html">📚 Libros</a></li>
+            <li><a href="crear-autor.html" class="active">➕ Nuevo Autor</a></li>
+            <li><a href="crear-libro.html">➕ Nuevo Libro</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Título -->
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">👤 Crear Nuevo Autor</h1>
+          <a href="autores.html" class="btn btn-secondary">← Volver a la lista</a>
+        </div>
+        <p>Completa la información del nuevo autor que deseas agregar al sistema.</p>
+      </div>
+
+      <!-- Formulario -->
+      <div class="card">
+        <form id="form-autor" class="form-container">
+          <div class="form-grid">
+            <!-- Nombre -->
+            <div class="form-group">
+              <label for="nombre" class="form-label">
+                <strong>Nombre *</strong>
+              </label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                class="form-input"
+                placeholder="Ej: Gabriel"
+                required
+                maxlength="100"
+              />
+            </div>
+
+            <!-- Apellido -->
+            <div class="form-group">
+              <label for="apellido" class="form-label">
+                <strong>Apellido *</strong>
+              </label>
+              <input
+                type="text"
+                id="apellido"
+                name="apellido"
+                class="form-input"
+                placeholder="Ej: García Márquez"
+                required
+                maxlength="100"
+              />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <!-- Fecha de Nacimiento -->
+            <div class="form-group">
+              <label for="fechaNacimiento" class="form-label">📅 Fecha de Nacimiento</label>
+              <input
+                type="date"
+                id="fechaNacimiento"
+                name="fechaNacimiento"
+                class="form-input"
+              />
+            </div>
+
+            <!-- Nacionalidad con select -->
+            <div class="form-group">
+              <label for="nacionalidad" class="form-label">🌍 Nacionalidad</label>
+              <select id="nacionalidad" name="nacionalidad" class="form-input">
+                <option value="" disabled selected>Selecciona una nacionalidad</option>
+                <option value="Ecuatoriano">Ecuatoriano</option>
+                <option value="Colombiano">Colombiano</option>
+                <option value="Mexicano">Mexicano</option>
+                <option value="Español">Español</option>
+                <option value="Argentino">Argentino</option>
+                <!-- Agrega más según necesidad -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Biografía -->
+          <div class="form-group">
+            <label for="bibliografia" class="form-label">📝 Biografía / Descripción</label>
+            <textarea
+              id="bibliografia"
+              name="bibliografia"
+              class="form-textarea"
+              placeholder="Breve descripción del autor, logros, premios, etc."
+              rows="4"
+            ></textarea>
+          </div>
+
+          <!-- Botones -->
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="history.back()">
+              ❌ Cancelar
+            </button>
+            <button type="submit" class="btn btn-success">
+              ✅ Crear Autor
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Información adicional -->
+      <div class="card">
+        <h3>ℹ️ Información Importante</h3>
+        <ul>
+          <li><strong>Campos obligatorios:</strong> Los campos marcados con (*) son requeridos.</li>
+          <li><strong>Nombre y Apellido:</strong> Serán visibles en la lista de autores y en los libros.</li>
+          <li><strong>Fecha de Nacimiento:</strong> Opcional, pero útil para mostrar la edad del autor.</li>
+          <li><strong>Biografía:</strong> Campo opcional para agregar información adicional sobre el autor.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Sistema de Librería. Desarrollado con ❤️ para la gestión de bibliotecas.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

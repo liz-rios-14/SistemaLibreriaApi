@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Librería - Dashboard</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- <link rel="stylesheet" href="../css/forms.css"> -->
+<!-- <link rel="stylesheet" href="../css/tables.css"> -->
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Sistema de Librería</div>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">🏠 Dashboard</a></li>
+            <li><a href="pages/autores.html">👥 Autores</a></li>
+            <li><a href="pages/libros.html">📚 Libros</a></li>
+            <li><a href="pages/crear-autor.html">➕ Nuevo Autor</a></li>
+            <li><a href="pages/crear-libro.html">➕ Nuevo Libro</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Título principal -->
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">📊 Dashboard del Sistema</h1>
+        </div>
+        <p>Bienvenido al Sistema de Gestión de Librería. Aquí puedes ver un resumen general de la información.</p>
+      </div>
+
+      <!-- Estadísticas -->
+      <section class="stats">
+        <div class="stat-card">
+          <div class="stat-number" id="total-autores">0</div>
+          <div class="stat-label">Total Autores</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="total-libros">0</div>
+          <div class="stat-label">Total Libros</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="total-generos">0</div>
+          <div class="stat-label">Géneros Literarios</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="total-editorials">0</div>
+          <div class="stat-label">Editoriales</div>
+        </div>
+      </section>
+
+      <!-- Recientes -->
+      <div class="grid grid-2">
+        <!-- Autores recientes -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">👥 Autores Recientes</h2>
+            <a href="pages/autores.html" class="btn btn-primary">Ver todos</a>
+          </div>
+          <div id="recent-autores" class="card-content">
+            <div class="loading">
+              <div class="spinner"></div>
+              <p>Cargando autores...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Libros recientes -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">📚 Libros Recientes</h2>
+            <a href="pages/libros.html" class="btn btn-primary">Ver todos</a>
+          </div>
+          <div id="recent-libros" class="card-content">
+            <div class="loading">
+              <div class="spinner"></div>
+              <p>Cargando libros...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acciones rápidas -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">⚡ Acciones Rápidas</h2>
+        </div>
+        <div class="grid grid-4">
+          <a href="pages/crear-autor.html" class="btn btn-success">👤 Agregar Nuevo Autor</a>
+          <a href="pages/crear-libro.html" class="btn btn-success">📖 Agregar Nuevo Libro</a>
+          <a href="pages/autores.html" class="btn btn-primary">👥 Gestionar Autores</a>
+          <a href="pages/libros.html" class="btn btn-primary">📚 Gestionar Libros</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Sistema de Librería. Desarrollado con ❤️ para la gestión de bibliotecas.</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+
+  <style>
+    /* Estilos específicos del dashboard */
+    .recent-item {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .recent-item:last-child {
+      border-bottom: none;
+    }
+
+    .recent-item-info h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--dark-color);
+    }
+
+    .recent-item-info p {
+      margin: 0;
+      color: var(--secondary-color);
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 768px) {
+      .recent-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+  </style>
+</body>
+</html>

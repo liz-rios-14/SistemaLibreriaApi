@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestión de Libros - Sistema de Librería</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/forms.css" />
+    <link rel="stylesheet" href="../css/tables.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Sistema de Librería</div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">🏠 Dashboard</a></li>
+                        <li><a href="autores.html">👥 Autores</a></li>
+                        <li><a href="libros.html" class="active">📚 Libros</a></li>
+                        <li><a href="crear-autor.html">➕ Nuevo Autor</a></li>
+                        <li><a href="crear-libro.html">➕ Nuevo Libro</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Título y acciones -->
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">📚 Gestión de Libros</h1>
+                    <a href="crear-libro.html" class="btn btn-success">
+                        ➕ Agregar Nuevo Libro
+                    </a>
+                </div>
+                <p>Administra todos los libros registrados en el sistema con sus respectivos autores.</p>
+            </div>
+
+            <!-- Controles de tabla -->
+            <div class="card">
+                <div class="table-controls">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input 
+                            type="text" 
+                            id="search-libros"
+                            class="search-input" 
+                            placeholder="Buscar libros por título, editorial, género o ISBN..."
+                        />
+                    </div>
+                    <div class="flex gap-1">
+                        <button class="btn btn-secondary" onclick="location.reload()">
+                            🔄 Actualizar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabla de libros -->
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" onclick="app.sortLibros('titulo')">📖 Título</th>
+                                <th>📋 ISBN</th>
+                                <th class="sortable" onclick="app.sortLibros('editorial')">🏢 Editorial</th>
+                                <th class="sortable" onclick="app.sortLibros('genero')">🎭 Género</th>
+                                <th>👥 Autores</th>
+                                <th>⚙️ Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="libros-tbody">
+                            <tr>
+                                <td colspan="6">
+                                    <div class="loading">
+                                        <div class="spinner"></div>
+                                        <p>Cargando libros...</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sistema de Librería. Desarrollado con ❤️ para la gestión de bibliotecas.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

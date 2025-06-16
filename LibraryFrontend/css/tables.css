@@ -1,0 +1,253 @@
+/* Estilos para tablas */
+.table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    font-size: 0.875rem;
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: var(--light-color);
+    font-weight: 600;
+    color: var(--dark-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.table tr:hover {
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Acciones en tabla */
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-actions .btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius);
+    transition: background-color 0.3s ease;
+}
+
+.table-actions .btn-edit {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.table-actions .btn-edit:hover {
+    background-color: #1d4ed8;
+}
+
+.table-actions .btn-delete {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.table-actions .btn-delete:hover {
+    background-color: #b91c1c;
+}
+
+/* Búsqueda y filtros */
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    max-width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+    pointer-events: none;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.pagination-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    color: var(--dark-color);
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.pagination-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Estados de tabla */
+.table-empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.table-loading {
+    text-align: center;
+    padding: 3rem;
+}
+
+/* Tags para géneros, nacionalidades, etc. */
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.tag-secondary {
+    background-color: var(--secondary-color);
+}
+
+.tag-success {
+    background-color: var(--success-color);
+}
+
+/* Lista de autores en libros */
+.authors-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+/* Responsive para tablas */
+@media (max-width: 768px) {
+    .table-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        max-width: none;
+        width: 100%;
+    }
+
+    .table {
+        font-size: 0.75rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.5rem;
+    }
+
+    .table-actions {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+}
+
+/* Ordenamiento de columnas */
+.sortable {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding-right: 1.5rem;
+}
+
+.sortable:hover {
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+.sortable::after {
+    content: "↕️";
+    position: absolute;
+    right: 0.5rem;
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
+
+.sortable.asc::after {
+    content: "↑";
+    opacity: 1;
+}
+
+.sortable.desc::after {
+    content: "↓";
+    opacity: 1;
+}
